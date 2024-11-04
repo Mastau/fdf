@@ -1,0 +1,9 @@
+- Parsing fun
+- Lire la doc de la Macro
+
+Doc Matrice
+- Matrice rotation > axe x, y
+Matrice scale
+matrice translation
+Matrice qui en resulte > calcul sur chaque point
+
