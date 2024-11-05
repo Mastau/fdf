@@ -7,3 +7,11 @@ Matrice scale
 matrice translation
 Matrice qui en resulte > calcul sur chaque point
 
+
+
+TODO :
+-Doc Matrice
+- Affichage window x Px Macrolib
+
+
+https://wiki.libsdl.org/SDL2/SDL_Scancode
