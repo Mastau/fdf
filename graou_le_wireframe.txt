@@ -15,3 +15,19 @@ TODO :
 
 
 https://wiki.libsdl.org/SDL2/SDL_Scancode
+
+
+FDF.h
+
+Struct map
+- t_mlx (mlx, win ect..)
+- t_pos
+- WIDTH
+- HEIGHT
+
+Parsing Map
+>= Verif str file name ?
+>= open file
+>= GNL x Split bim bam boum
+On stock je sais pas comment
+
