@@ -26,7 +26,7 @@ Struct map
 - HEIGHT
 
 Parsing Map
->= Verif str file name ?
+>= Verif str file name ? //flemme
 >= open file
 >= GNL x Split bim bam boum
 On stock je sais pas comment
