@@ -8,6 +8,9 @@ OBJS = $(SRCS:%.c=$(DIROBJS)/%.o)
 HEADER = -I lib/libft -I lib/MacroLibX/includes -I includes/
 SRCS = src/fdf.c \
 	   src/parsing/parsing.c \
+	   src/math/matrix.c \
+	   src/render/render_map.c \
+	   src/render/drawline.c \
 
 all: $(NAME)
 

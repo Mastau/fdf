@@ -6,12 +6,22 @@
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:04:43 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/07 18:21:41 by thomarna         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:23:51 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+
+#include <SDL2/SDL_mouse.h>
+
+# ifndef WIDTH
+#  define WIDTH 1080
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 720
+# endif
 
 typedef struct s_mlx
 {

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   maths.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 18:41:03 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/08 17:47:07 by thomarna         ###   ########.fr       */
+/*   Created: 2024/11/08 11:32:43 by thomarna          #+#    #+#             */
+/*   Updated: 2024/11/08 15:07:30 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef MATHS_H
+# define MATHS_H
 
 #include "fdf.h"
-#include "mlx.h"
+#include <math.h>
 
-typedef struct s_line
-{
-	int	pt1;
-	int	pt2;
-	int	diff;
-	float	d;
-	float	i;
-}	t_line;
+void rotation_matrix_x(float theta, float matrix[3][3]);
+void rotation_matrix_y(float theta, float matrix[3][3]);
+void rotation_matrix_z(float theta, float matrix[3][3]);
+void print_matrix_3d(float matrix[3][3]);
 
-void	ft_drawline(t_mlx *mlx, int *matrix1, int *matrix2);
-void	generate_map(t_map *map);
+
 #endif

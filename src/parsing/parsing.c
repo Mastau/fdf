@@ -6,7 +6,7 @@
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:00:02 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/07 18:58:54 by thomarna         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:38:00 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void convert_str(char **str, int *y)
 
 	i = 0;
 	if (str == NULL)
+	{
+		ft_printf("%s", "Convert_sr(): str == null\n");
 		return ;
+	}
 	while (str[i])
 	{
-		*y = ft_atoi(str[i]);
+		y[i] = ft_atoi(str[i]);
 		i++;
-		y++;
 	}
 }
 
@@ -41,7 +43,10 @@ int set_point(t_map *map, t_list *node_h)
 	position = 0;
 	map->y = malloc(map->width * map->width * sizeof(int));
 	if (map->y == NULL)
-		return (-1);
+	{
+		printf("Erreur : allocation de map->y a échoué\n");
+		return (0);
+	}
 	while (node_h)
 	{
 		convert_str(node_h->content, &map->y[position]);
@@ -64,11 +69,19 @@ int	line_size(char **str)
 t_map	*fill(t_list *node_h)
 {
 	t_map	*map;
-	map = malloc(sizeof(t_map *));
+	map = malloc(sizeof(t_map));
 	if (map == NULL)
+	{
+		printf("Erreur : allocation de map a échoué\n");
 		return (NULL);
+	}
 	map->height = ft_lstsize(node_h);
 	map->width = line_size(node_h->content);
+	if (!set_point(map, node_h))
+	{
+		free(map);
+		return(NULL);
+	}
 	return (map);
 }
 
@@ -104,7 +117,10 @@ t_map	*parsing(char *file)
 	node_h = get_map(fd);
 	close(fd);
 	if (!node_h)
+	{
+		printf("Erreur : node_h a échoué\n");
 		return (NULL);
+	}
 	map = fill(node_h);
 	ft_lstclear(&node_h, free_str);
 	return (map);

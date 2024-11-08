@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 18:41:03 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/08 17:47:07 by thomarna         ###   ########.fr       */
+/*   Created: 2024/11/08 15:30:42 by thomarna          #+#    #+#             */
+/*   Updated: 2024/11/08 17:46:52 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "render.h"
 
-#include "fdf.h"
-#include "mlx.h"
-
-typedef struct s_line
+void	generate_map(t_map *map)
 {
-	int	pt1;
-	int	pt2;
-	int	diff;
-	float	d;
-	float	i;
-}	t_line;
+	int x_offset;
+    int y_offset;
+	int	i;
+	int	j;
 
-void	ft_drawline(t_mlx *mlx, int *matrix1, int *matrix2);
-void	generate_map(t_map *map);
-#endif
+	i = 0;
+	j = 0;
+	x_offset = WIDTH / (map->width + 1);
+	y_offset = HEIGHT / (map->height + 1);
+    while (i < map->height) {
+        while (j < map->width) {
+			mlx_pixel_put(map->mlx.con, map->mlx.win, (j * x_offset), (i * y_offset), 0xFF223344);
+			j++;
+        }
+		i++;
+		j = 0;
+    }
+}

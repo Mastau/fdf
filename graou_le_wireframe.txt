@@ -31,3 +31,16 @@ Parsing Map
 >= GNL x Split bim bam boum
 On stock je sais pas comment
 
+
+Math > Les matrices (oskour)
+Matrice Rotation (x, y)
+Matrice translation
+Matrice de scale
+
+On affiche des trucs ???
+
+
+Debug Map
+prinft map->height & width
+Tableau de Y
+
