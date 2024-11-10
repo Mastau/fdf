@@ -6,7 +6,7 @@
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:41:03 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/08 17:47:07 by thomarna         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:29:14 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ typedef struct s_line
 	float	i;
 }	t_line;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+} t_point;
+
 void	ft_drawline(t_mlx *mlx, int *matrix1, int *matrix2);
 void	generate_map(t_map *map);
+void	draw_wireframe(t_map *map);
 #endif

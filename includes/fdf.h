@@ -6,7 +6,7 @@
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:04:43 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/08 16:23:51 by thomarna         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:16:32 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_map
 	int	width;
 	int	height;
 	int	*y;
+	double zoom;
 }	t_map;
 
 #endif
