@@ -2,7 +2,7 @@ NAME = fdf
 CC = cc
 LIBFT = lib/libft/libft.so
 MLX = lib/MacroLibX/libmlx.so
-FLAGS = -Werror -Wall -Wextra
+FLAGS = -Werror -Wall -Wextra -g
 DIROBJS = .objs
 OBJS = $(SRCS:%.c=$(DIROBJS)/%.o)
 HEADER = -I lib/libft -I lib/MacroLibX/includes -I includes/

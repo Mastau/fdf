@@ -7,23 +7,9 @@ Matrice scale
 matrice translation
 Matrice qui en resulte > calcul sur chaque point
 
-
-
-TODO :
--Doc Matrice
-- Affichage window x Px Macrolib
-
-
 https://wiki.libsdl.org/SDL2/SDL_Scancode
 
-
 FDF.h
-
-Struct map
-- t_mlx (mlx, win ect..)
-- t_pos
-- WIDTH
-- HEIGHT
 
 Parsing Map
 >= Verif str file name ? //flemme
@@ -40,12 +26,28 @@ Matrice de scale
 On affiche des trucs ???
 
 
-Debug Map
-prinft map->height & width
-Tableau de Y
+TODO
+MANDA:
+- Utilisation des Images Macro DONE
+- Better parsing (Verif filename, line size, char only number et/ou hexa color) EN COURS
+- Gestion des leak (Update / reload ?) DONE
+- Error Management EN COURS
+- Foutre des structs sur la gestion des offsets en fonction de ligne height ?
+- Define Scale en fonction de la valeur la plus haute / basse de Y ? si > 20 > Scale 2
+sinon scale = 5 ?
+
+BONUS
+- Refacto float en Double > Gagner en precision
+- Calcul si point est en dehors de la window
+- Setup matrice de rotation, matrice de translation
+- Bind key hook on matrix func
 
 
-Print les points ?
 
+
+Offset WIDTH/2
+Little map HEIGHT / 2
+Middle map /4
+Huge map / 16
 
 

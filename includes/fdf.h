@@ -6,7 +6,7 @@
 /*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:04:43 by thomarna          #+#    #+#             */
-/*   Updated: 2024/11/10 14:16:32 by thomarna         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:42:42 by thomarna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <SDL2/SDL_mouse.h>
 
 # ifndef WIDTH
-#  define WIDTH 1080
+#  define WIDTH 1920
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 720
+#  define HEIGHT 1080
 # endif
 
 typedef struct s_mlx
@@ -37,6 +37,8 @@ typedef struct s_map
 	int	height;
 	int	*y;
 	double zoom;
+	double offset_x;
+	double offset_y;
 }	t_map;
 
 #endif

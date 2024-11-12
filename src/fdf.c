@@ -1,81 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thomarna <thomarna@42angouleme.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 13:29:35 by thomarna          #+#    #+#             */
+/*   Updated: 2024/11/12 18:41:37 by thomarna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "mlx.h"
+#include "fdf.h"
 #include "libft.h"
+#include "maths.h"
+#include "mlx.h"
 #include "parsing.h"
 #include "render.h"
-#include "maths.h"
-#include "fdf.h"
 
-
-int window_hook(int event, void* param)
+int	window_hook(int event, void *param)
 {
-	if(event == 0)
-		mlx_loop_end(((t_mlx*)param)->con);
-	return 0;
+	t_map	*map;
+
+	map = (t_map *)param;
+	if (event == 0)
+	{
+		mlx_destroy_image(map->mlx.con, map->mlx.img);
+		mlx_loop_end(map->mlx.con);
+	}
+	return (0);
 }
 
 int	key_hook(int key, void *param)
 {
-	t_map *map;
-	map = (t_map*)param;
+	t_map	*map;
+
+	map = (t_map *)param;
 	if (key == 41)
+	{
+		mlx_destroy_image(map->mlx.con, map->mlx.img);
 		mlx_loop_end(map->mlx.con);
+	}
 	if (key == 81 || key == 82)
 	{
-		if (key == 81)
-			map->zoom *= 1.1;
 		if (key == 82)
-			map->zoom /= 1.1;
+			map->zoom *= 1.10;
+		if (key == 81)
+			map->zoom /= 1.10;
 		if (map->zoom < 0.1)
 			map->zoom = 0.1;
 		if (map->zoom > 10.0)
 			map->zoom = 10.0;
-		mlx_clear_window(map->mlx.con, map->mlx.win);
+		mlx_destroy_image(map->mlx.con, map->mlx.img);
 		draw_wireframe(map);
 	}
 	return (0);
 }
 
-void	debug(t_map *map)
-{
-	int	i;
-	if (map == NULL) {
-		ft_printf("Erreur : map est NULL\n");
-		return;
-    }
-	if (map->y == NULL) {
-		ft_printf("Erreur : map->y est NULL\n");
-		return;
-    }
-	i = 0;
-	ft_printf("DEBUG T_MAP\n Width: %d height: %d\n", map->width, map->height);
-	while (i < (map->width * map->height))
-	{	
-		ft_printf("%d ", map->y[i]);
-		if ((i + 1) % map->width == 0)
-			ft_printf("%c", '\n');
-		i++;
-	}
-}
-
 int	main(int ac, char **av)
 {
-	if (ac != 2)
-		return (0);
 	t_mlx	mlx;
 	t_map	*map;
 
+	if (ac != 2)
+		return (0);
 	map = parsing(av[1]);
+	if (map == NULL)
+		return (0);
 	mlx.con = mlx_init();
-	mlx.img = NULL;
-	mlx.win = mlx_new_window(mlx.con, 1280, 720, "fdf");
+	mlx.win = mlx_new_window(mlx.con, WIDTH, HEIGHT, "fdf");
 	map->mlx = mlx;
-	map->zoom = 0.5;
-	mlx_on_event(mlx.con, mlx.win, MLX_WINDOW_EVENT, window_hook, &mlx);
-	mlx_on_event(mlx.con, mlx.win, MLX_KEYDOWN, key_hook, &mlx);
-	//debug(map);
+	map->zoom = 1.0;
+	mlx_set_fps_goal(mlx.con, 10);
+	mlx_on_event(mlx.con, mlx.win, MLX_WINDOW_EVENT, window_hook, map);
+	mlx_on_event(mlx.con, mlx.win, MLX_KEYDOWN, key_hook, map);
 	draw_wireframe(map);
 	mlx_loop(mlx.con);
 	mlx_destroy_window(mlx.con, mlx.win);
 	mlx_destroy_display(mlx.con);
+	free(map->y);
+	free(map);
 }
